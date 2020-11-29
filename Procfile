@@ -1,1 +1,0 @@
-main: node index.js
