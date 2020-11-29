@@ -7,7 +7,6 @@ const HOST_TO_PING = process.env.HOST_TO_MONITOR;
 const PD_SERVICE_TO_TRIGGER = process.env.PAGER_DUTY_INTEGRATION_KEY;
 
 async function main() {
-    console.log(HOST_TO_PING)
     try {
         const serverIsAlive = await pingServer(HOST_TO_PING);
         if (!serverIsAlive) {

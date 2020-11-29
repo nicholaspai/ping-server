@@ -8,6 +8,7 @@ const ping = require('ping');
 async function pingServer(host) {
     try {
         const res = await ping.promise.probe(host);
+        console.log(res)
 
         console.log(`(ping) Server is ${res.alive ? "alive" : "down"}: ${JSON.stringify(res.output)}`);
 
