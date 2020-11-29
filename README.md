@@ -1,5 +1,5 @@
 # ping-server
-Cron job that pings a server and sends alerts when it doesn't receive a response. `ProcFile` is included to be manually run as an application on Heroku.
+Pings a server and sends alerts when it doesn't receive a response. Designed to be run as a cron job.
 
 ## pingServer
 Pings a host, defined in environment variables.
