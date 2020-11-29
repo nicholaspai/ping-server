@@ -11,7 +11,6 @@ async function pingServer(host) {
 
         console.log(`(ping) Server is ${res.alive ? "alive" : "down"}: ${JSON.stringify(res.output)}`);
 
-        return false;
         return res.alive;
     } catch (err) {
         throw new Error(`(ping) Error: `, err);
