@@ -1,0 +1,23 @@
+{
+  "name": "ping-server",
+  "version": "1.0.0",
+  "description": "Cron job that pings a server and sends alerts when it doesn't receive a response.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholaspai/ping-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicholaspai/ping-server/issues"
+  },
+  "homepage": "https://github.com/nicholaspai/ping-server#readme",
+  "dependencies": {
+    "@pagerduty/pdjs": "^2.0.1",
+    "dotenv": "^8.2.0"
+  }
+}
