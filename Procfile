@@ -1,2 +1,1 @@
-# Server
-test-alert: node sendPagerDutyAlert.js
+main: node index.js

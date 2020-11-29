@@ -18,6 +18,7 @@
   "homepage": "https://github.com/nicholaspai/ping-server#readme",
   "dependencies": {
     "@pagerduty/pdjs": "^2.0.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "ping": "^0.3.0"
   }
 }

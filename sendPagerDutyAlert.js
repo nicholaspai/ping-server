@@ -1,55 +1,34 @@
-require("dotenv").config();
 const { event } = require("@pagerduty/pdjs");
 
-// API Request Body
-const ROUTING_KEY = process.env.PAGER_DUTY_INTEGRATION_KEY;
+/**
+ * Triggers an alert to PagerDuty service associated with `ROUTING_KEY` that server @ `serverUrl` failed to respond.
+ * @param {String} host Host that failed to respond to ping.
+ * @param {String} integrationKey Integration key for PagerDuty service to trigger an alert for.
+ * @return {String} dedupKey unique dedupKey for triggered alert to PagerDuty service.
+ */
+async function sendAlertPingServerFailed(host, integrationKey) {
+    try {
+        const res = await event({
+            data: {
+                routing_key: integrationKey,
+                event_action: 'trigger',
+                payload: {
+                    summary: `${host} failed to respond`,
+                    class: "ping failure",
+                    source: host,
+                    severity: 'critical',
+                },
+            },
+        }); 
 
-// Example
-event({
-    data: {
-        routing_key: ROUTING_KEY,
-        event_action: 'trigger',
-        payload: {
-            summary: `salmonshark.org failed to respond`,
-            class: "ping failure",
-            source: "salmonshark.org",
-            severity: 'critical',
-        },
-    },
-  })
-    .then(console.log)
-    .catch(console.error);
-// /**
-//  * Triggers an alert to PagerDuty service associated with `ROUTING_KEY` that server @ `serverUrl` failed to respond.
-//  * @param {String} serverUrl Server URL that failed to respond
-//  * @return {String} dedupKey unique dedupKey for triggered alert to PagerDuty service.
-//  */
-// async function sendAlertPingServerFailed(serverUrl) {
-//     try {
-//         const sendEvent = event({
-//             data: {
-//                 routing_key: ROUTING_KEY,
-//                 event_action: 'trigger',
-//                 payload: {
-//                     summary: `${serverUrl} failed to respond`,
-//                     class: "ping failure",
-//                     source: serverUrl,
-//                     severity: 'critical',
-//                 },
-//             },
-//         })
-//         const res = await sendEvent()  
-
-//         // Debug logging
-//         console.log(`Sent event: ${JSON.stringify(res.data)}`)
-
-//         return res.data.dedup_key
+        console.log(`(pagerDutyAPI) Triggered new alert: ${JSON.stringify(res.data)}`);
   
-//     } catch(err) {
-//         console.error(`PagerDuty API failure:`, err)
-//     }
-// }
+        return res.data.dedup_key;
+    } catch(err) {
+        throw new Error(`(pagerDutyAPI) Error: `, err);
+    }
+}
 
-// module.exports = {
-//     sendAlertPingServerFailed
-// }
+module.exports = {
+    sendAlertPingServerFailed
+}
