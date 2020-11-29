@@ -4,7 +4,8 @@
   "description": "Cron job that pings a server and sends alerts when it doesn't receive a response.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \"Error: missing start script\" && exit 1"
   },
   "repository": {
     "type": "git",
