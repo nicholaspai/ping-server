@@ -4,7 +4,9 @@
   "description": "Cron job that pings a server and sends alerts when it doesn't receive a response.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-logs": "heroku logs --tail --app ping-mini-pc",
+    "heroku-run": "heroku"
   },
   "repository": {
     "type": "git",
